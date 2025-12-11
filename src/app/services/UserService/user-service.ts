@@ -8,7 +8,7 @@ import { HttpClient } from '@angular/common/http';
 })
 
 export class UserService {
-  private readonly base = 'http://localhost:3000';
+  private readonly base = 'http://192.168.1.162:3000';
   private readonly STORAGE_KEY = 'currentUser';
 
   private readonly _currentUser = signal<User | null>(null);
