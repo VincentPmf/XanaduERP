@@ -2,13 +2,14 @@ import { computed, Injectable, signal } from '@angular/core';
 import { map, Observable, tap } from 'rxjs';
 import { ApiUser, User } from '../../models/User/user';
 import { HttpClient } from '@angular/common/http';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 
 export class UserService {
-  private readonly base = 'http://192.168.1.162:3000';
+  private readonly base = environment.apiUrl;
   private readonly STORAGE_KEY = 'currentUser';
 
   private readonly _currentUser = signal<User | null>(null);
