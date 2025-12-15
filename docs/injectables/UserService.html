@@ -137,6 +137,19 @@
         </p>
 
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>Service de gestion des utilisateurs.</p>
+<p>Rôle :</p>
+<ul>
+<li>Centraliser les appels HTTP vers l&#39;API utilisateur (CRUD, login).</li>
+<li>Maintenir en mémoire l&#39;utilisateur actuellement connecté.</li>
+<li>Exposer un état réactif (<code>currentUser</code>, <code>isLoggedIn</code>) pour le reste de l&#39;application.</li>
+</ul>
+
+            </p>
 
 
 
@@ -169,11 +182,6 @@
                             <li>
                                     <span class="modifier">Readonly</span>
                                 <a href="#isLoggedIn" >isLoggedIn</a>
-                            </li>
-                            <li>
-                                    <span class="modifier">Private</span>
-                                    <span class="modifier">Readonly</span>
-                                <a href="#STORAGE_KEY" >STORAGE_KEY</a>
                             </li>
                         </ul>
                     </td>
@@ -228,12 +236,14 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/services/UserService/user-service.ts:19</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">src/app/services/UserService/user-service.ts:44</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Initialise le service avec le client HTTP Angular.</p>
+</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -242,6 +252,7 @@
                                                 <td>Name</td>
                                                     <td>Type</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -256,6 +267,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>Client HTTP utilisé pour communiquer avec l&#39;API backend.</p>
+
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -291,14 +306,17 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="32"
-                                    class="link-to-prism">src/app/services/UserService/user-service.ts:32</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="85"
+                                    class="link-to-prism">src/app/services/UserService/user-service.ts:85</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Crée un nouvel utilisateur.</p>
+<p>Effectue un <code>POST</code> sur l&#39;URL de base avec les données fournies.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -309,6 +327,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -323,6 +342,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>Données nécessaires à la création (email, mot de passe, prénom, nom).</p>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -332,7 +355,8 @@
 
                         </div>
                             <div class="io-description">
-                                
+                                <p>Un <code>Observable</code> émettant l&#39;utilisateur créé.</p>
+
                             </div>
                 </td>
             </tr>
@@ -358,14 +382,17 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="27"
-                                    class="link-to-prism">src/app/services/UserService/user-service.ts:27</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="73"
+                                    class="link-to-prism">src/app/services/UserService/user-service.ts:73</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Récupère un utilisateur par son identifiant.</p>
+<p>Effectue un <code>GET</code> sur <code>/{id}</code>.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -376,6 +403,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -390,6 +418,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>Identifiant unique de l&#39;utilisateur.</p>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -399,7 +431,8 @@
 
                         </div>
                             <div class="io-description">
-                                
+                                <p>Un <code>Observable</code> émettant l&#39;utilisateur correspondant.</p>
+
                             </div>
                 </td>
             </tr>
@@ -425,19 +458,26 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="23"
-                                    class="link-to-prism">src/app/services/UserService/user-service.ts:23</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="61"
+                                    class="link-to-prism">src/app/services/UserService/user-service.ts:61</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Récupère la liste complète des utilisateurs.</p>
+<p>Effectue un <code>GET</code> sur l&#39;URL de base de l&#39;API.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="../classes/User.html" target="_self" >Observable&lt;User[]&gt;</a></code>
 
                         </div>
+                            <div class="io-description">
+                                <p>Un <code>Observable</code> émettant un tableau de <code>User</code>.</p>
+
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -462,14 +502,22 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="50"
-                                    class="link-to-prism">src/app/services/UserService/user-service.ts:50</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="124"
+                                    class="link-to-prism">src/app/services/UserService/user-service.ts:124</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Authentifie un utilisateur à partir de son email et mot de passe.</p>
+<p>Étapes :</p>
+<ol>
+<li>Envoie une requête <code>POST</code> sur <code>/login</code> avec les informations de connexion.</li>
+<li>Transforme la réponse <code>ApiUser</code> en modèle <code>User</code> via <code>User.fromApi</code>.</li>
+<li>Met à jour le signal <code>_currentUser</code> avec l&#39;utilisateur authentifié.</li>
+</ol>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -480,6 +528,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -494,6 +543,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>Objet contenant l&#39;email et le mot de passe.</p>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -503,7 +556,8 @@
 
                         </div>
                             <div class="io-description">
-                                
+                                <p>Un <code>Observable</code> émettant l&#39;utilisateur authentifié.</p>
+
                             </div>
                 </td>
             </tr>
@@ -529,14 +583,19 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="56"
-                                    class="link-to-prism">src/app/services/UserService/user-service.ts:56</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="138"
+                                    class="link-to-prism">src/app/services/UserService/user-service.ts:138</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Déconnecte l&#39;utilisateur courant.</p>
+<p>Réinitialise l&#39;état local en mettant <code>_currentUser</code> à <code>null</code>.
+La logique complémentaire (nettoyage de token, redirection, etc.)
+peut être gérée ailleurs ou ajoutée ici si nécessaire.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -566,14 +625,17 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="41"
-                                    class="link-to-prism">src/app/services/UserService/user-service.ts:41</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="103"
+                                    class="link-to-prism">src/app/services/UserService/user-service.ts:103</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Met à jour partiellement un utilisateur existant.</p>
+<p>Effectue un <code>PATCH</code> sur <code>/{id}</code> avec les champs à modifier.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -584,6 +646,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -598,6 +661,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>Identifiant de l&#39;utilisateur à mettre à jour.</p>
+
+                                            </td>
                                         </tr>
                                         <tr>
                                                 <td>data</td>
@@ -610,6 +677,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>Champs partiels à mettre à jour (email, mot de passe, prénom, nom).</p>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -619,7 +690,8 @@
 
                         </div>
                             <div class="io-description">
-                                
+                                <p>Un <code>Observable</code> émettant l&#39;utilisateur mis à jour.</p>
+
                             </div>
                 </td>
             </tr>
@@ -657,10 +729,20 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/app/services/UserService/user-service.ts:17</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">src/app/services/UserService/user-service.ts:30</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Signal interne représentant l&#39;utilisateur actuellement connecté.</p>
+<ul>
+<li><code>null</code> → aucun utilisateur connecté.</li>
+<li><code>User</code> → utilisateur authentifié.</li>
+</ul>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -690,10 +772,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/services/UserService/user-service.ts:14</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/app/services/UserService/user-service.ts:22</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>URL de base de l&#39;API utilisateur, configurée via l&#39;environnement.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -722,10 +810,18 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/services/UserService/user-service.ts:18</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">src/app/services/UserService/user-service.ts:38</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Signal en lecture seule exposant l&#39;utilisateur courant.</p>
+<p>Permet à d&#39;autres composants/services d&#39;observer l&#39;état utilisateur
+sans pouvoir le modifier directement.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -754,43 +850,17 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/services/UserService/user-service.ts:19</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">src/app/services/UserService/user-service.ts:44</a></div>
                         </td>
                     </tr>
 
-
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="STORAGE_KEY"></a>
-                    <span class="name">
-                            <span class="modifier">Private</span>
-                            <span class="modifier">Readonly</span>
-                        <span ><b>STORAGE_KEY</b></span>
-                        <a href="#STORAGE_KEY"><span class="icon ion-ios-link"></span></a>
-                    </span>
+                    <div class="io-description"><p>Signal dérivé indiquant si un utilisateur est connecté.</p>
+<p><code>true</code> si <code>_currentUser</code> n&#39;est pas <code>null</code>, <code>false</code> sinon.</p>
+</div>
                 </td>
             </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Default value : </i><code>&#x27;currentUser&#x27;</code>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/services/UserService/user-service.ts:15</a></div>
-                        </td>
-                    </tr>
-
 
         </tbody>
     </table>
@@ -807,30 +877,83 @@ import { HttpClient } from &#x27;@angular/common/http&#x27;;
 import { environment } from &#x27;../../../environments/environment&#x27;;
 
 
-
+/**
+ * Service de gestion des utilisateurs.
+ *
+ * Rôle :
+ * - Centraliser les appels HTTP vers l&#x27;API utilisateur (CRUD, login).
+ * - Maintenir en mémoire l&#x27;utilisateur actuellement connecté.
+ * - Exposer un état réactif (&#x60;currentUser&#x60;, &#x60;isLoggedIn&#x60;) pour le reste de l&#x27;application.
+ */
 @Injectable({
   providedIn: &#x27;root&#x27;,
 })
 
 export class UserService {
+  /** URL de base de l&#x27;API utilisateur, configurée via l&#x27;environnement. */
   private readonly base &#x3D; environment.apiUrl;
-  private readonly STORAGE_KEY &#x3D; &#x27;currentUser&#x27;;
 
+    /**
+   * Signal interne représentant l&#x27;utilisateur actuellement connecté.
+   *
+   * - &#x60;null&#x60; → aucun utilisateur connecté.
+   * - &#x60;User&#x60; → utilisateur authentifié.
+   */
   private readonly _currentUser &#x3D; signal&lt;User | null&gt;(null);
+
+  /**
+   * Signal en lecture seule exposant l&#x27;utilisateur courant.
+   *
+   * Permet à d&#x27;autres composants/services d&#x27;observer l&#x27;état utilisateur
+   * sans pouvoir le modifier directement.
+   */
   readonly currentUser &#x3D; this._currentUser.asReadonly();
+    /**
+   * Signal dérivé indiquant si un utilisateur est connecté.
+   *
+   * &#x60;true&#x60; si &#x60;_currentUser&#x60; n&#x27;est pas &#x60;null&#x60;, &#x60;false&#x60; sinon.
+   */
   readonly isLoggedIn &#x3D; computed(() &#x3D;&gt; this._currentUser() !&#x3D;&#x3D; null);
 
+    /**
+   * Initialise le service avec le client HTTP Angular.
+   *
+   * @param http Client HTTP utilisé pour communiquer avec l&#x27;API backend.
+   */
   constructor(private http: HttpClient) {}
 
+
+  /**
+   * Récupère la liste complète des utilisateurs.
+   *
+   * Effectue un &#x60;GET&#x60; sur l&#x27;URL de base de l&#x27;API.
+   *
+   * @returns Un &#x60;Observable&#x60; émettant un tableau de &#x60;User&#x60;.
+   */
   list(): Observable&lt;User[]&gt; {
     return this.http.get&lt;User[]&gt;(this.base);
   }
 
+    /**
+   * Récupère un utilisateur par son identifiant.
+   *
+   * Effectue un &#x60;GET&#x60; sur &#x60;/{id}&#x60;.
+   *
+   * @param id Identifiant unique de l&#x27;utilisateur.
+   * @returns Un &#x60;Observable&#x60; émettant l&#x27;utilisateur correspondant.
+   */
   get(id: number): Observable&lt;User&gt; {
     return this.http.get&lt;User&gt;(&#x60;${this.base}/${id}&#x60;);
   }
 
-
+    /**
+   * Crée un nouvel utilisateur.
+   *
+   * Effectue un &#x60;POST&#x60; sur l&#x27;URL de base avec les données fournies.
+   *
+   * @param data Données nécessaires à la création (email, mot de passe, prénom, nom).
+   * @returns Un &#x60;Observable&#x60; émettant l&#x27;utilisateur créé.
+   */
   create(data: {
     email: string;
     password: string;
@@ -840,6 +963,15 @@ export class UserService {
     return this.http.post&lt;User&gt;(this.base, data);
   }
 
+    /**
+   * Met à jour partiellement un utilisateur existant.
+   *
+   * Effectue un &#x60;PATCH&#x60; sur &#x60;/{id}&#x60; avec les champs à modifier.
+   *
+   * @param id Identifiant de l&#x27;utilisateur à mettre à jour.
+   * @param data Champs partiels à mettre à jour (email, mot de passe, prénom, nom).
+   * @returns Un &#x60;Observable&#x60; émettant l&#x27;utilisateur mis à jour.
+   */
   update(id: number, data: Partial&lt;{
     email: string;
     password: string;
@@ -849,12 +981,32 @@ export class UserService {
     return this.http.patch&lt;User&gt;(&#x60;${this.base}/${id}&#x60;, data);
   }
 
+
+  /**
+   * Authentifie un utilisateur à partir de son email et mot de passe.
+   *
+   * Étapes :
+   * 1. Envoie une requête &#x60;POST&#x60; sur &#x60;/login&#x60; avec les informations de connexion.
+   * 2. Transforme la réponse &#x60;ApiUser&#x60; en modèle &#x60;User&#x60; via &#x60;User.fromApi&#x60;.
+   * 3. Met à jour le signal &#x60;_currentUser&#x60; avec l&#x27;utilisateur authentifié.
+   *
+   * @param data Objet contenant l&#x27;email et le mot de passe.
+   * @returns Un &#x60;Observable&#x60; émettant l&#x27;utilisateur authentifié.
+   */
   login(data: { email: string; password: string }): Observable&lt;User&gt; {
     return this.http.post&lt;ApiUser&gt;(&#x60;${this.base}/login&#x60;, data).pipe(
       map(apiUser &#x3D;&gt; User.fromApi(apiUser.user)),
       tap(user &#x3D;&gt; this._currentUser.set(user))
     );
   }
+
+  /**
+   * Déconnecte l&#x27;utilisateur courant.
+   *
+   * Réinitialise l&#x27;état local en mettant &#x60;_currentUser&#x60; à &#x60;null&#x60;.
+   * La logique complémentaire (nettoyage de token, redirection, etc.)
+   * peut être gérée ailleurs ou ajoutée ici si nécessaire.
+   */
   logout(): void {
     this._currentUser.set(null);
   }

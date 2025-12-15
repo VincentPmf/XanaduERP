@@ -345,9 +345,29 @@
                 <tr>
                     <td class="col-md-4">
                         <i>Default value : </i><code>() &#x3D;&gt; {
+    /**
+   * Injection du service utilisateur.
+   *
+   * Permet d’accéder à l’état d’authentification global de l’application.
+   */
   const userService &#x3D; inject(UserService);
+    /**
+   * Injection du routeur Angular.
+   *
+   * Utilisé pour rediriger l’utilisateur vers &#x60;/login&#x60;
+   * lorsqu’il tente d’accéder à une route protégée sans être connecté.
+   */
   const router &#x3D; inject(Router);
 
+    /**
+   * Vérification de l’état de connexion.
+   *
+   * - Si l’utilisateur n’est pas connecté :
+   *   - Redirection vers la page de login
+   *   - Blocage de l’activation de la route
+   * - Sinon :
+   *   - Autorisation de l’accès à la route demandée
+   */
   if (!userService.isLoggedIn()) {
     router.navigate([&#x27;/login&#x27;]);
     return false;
@@ -359,6 +379,19 @@
                     </td>
                 </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Guard d’authentification.</p>
+<p>Rôle :</p>
+<ul>
+<li>Protéger les routes nécessitant une authentification.</li>
+<li>Vérifier l’état de connexion de l’utilisateur avant l’activation d’une route.</li>
+<li>Rediriger vers la page de login si l’utilisateur n’est pas authentifié.</li>
+</ul>
+<p>Ce guard repose sur l’état réactif exposé par le UserService (<code>isLoggedIn</code>).</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -475,11 +508,29 @@
                     <td class="col-md-4">
                         <i>Default value : </i><code>{
   production: false,
+    /**
+   * URL de base de l’API backend en développement.
+   *
+   * Ici, l’API est accessible localement sur le port 3000.
+   * Typiquement utilisée avec un serveur Go en local.
+   */
   apiUrl: &#x27;http://localhost:3000&#x27;,
 }</code>
                     </td>
                 </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Configuration d’environnement – Développement.</p>
+<p>Cet environnement est utilisé lors du développement local.
+Il permet de :</p>
+<ul>
+<li>Pointer l’application Angular vers une API locale</li>
+<li>Désactiver les optimisations liées à la production</li>
+</ul>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -507,11 +558,29 @@
                     <td class="col-md-4">
                         <i>Default value : </i><code>{
   production: true,
+    /**
+   * URL de base de l’API backend en production.
+   *
+   * L’API est exposée via le même domaine que le front
+   * et accessible derrière le chemin &#x60;/api&#x60;
+   */
   apiUrl: &#x27;/api&#x27;,
 }</code>
                     </td>
                 </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Configuration d’environnement – Production.</p>
+<p>Cet environnement est utilisé lors du build de production.
+Il permet de :</p>
+<ul>
+<li>Activer les optimisations Angular</li>
+<li>Pointer vers l’API déployée en environnement réel</li>
+</ul>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>

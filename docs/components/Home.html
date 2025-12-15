@@ -138,6 +138,19 @@
 </p>
 
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Composant principal de la page d&#39;accueil.</p>
+<p>Rôle :</p>
+<ul>
+<li>Servir de conteneur pour les routes enfants via le RouterOutlet</li>
+<li>Fournir l&#39;accès à l&#39;utilisateur actuellement connecté</li>
+<li>Exposer une action de déconnexion</li>
+</ul>
+
+    </p>
 
 
 
@@ -250,12 +263,16 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/views/home/home.ts:18</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/app/views/home/home.ts:35</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Initialise le composant Home.</p>
+<p>Récupère la fonction <code>currentUser</code> exposée par le UserService
+afin de pouvoir accéder à l&#39;état d&#39;authentification courant.</p>
+</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -264,6 +281,7 @@
                                                 <td>Name</td>
                                                     <td>Type</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -278,6 +296,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>Service gérant l&#39;état utilisateur et l&#39;authentification.</p>
+
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -317,14 +339,18 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="25"
-                                    class="link-to-prism">src/app/views/home/home.ts:25</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="57"
+                                    class="link-to-prism">src/app/views/home/home.ts:57</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Déconnecte l&#39;utilisateur courant.</p>
+<p>Délègue la logique de déconnexion au UserService
+(suppression du token, nettoyage de l&#39;état utilisateur, redirection éventuelle).</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -360,10 +386,22 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/views/home/home.ts:18</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/app/views/home/home.ts:35</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Fonction retournant l&#39;utilisateur actuellement authentifié.</p>
+<p>Cette référence est fournie par le UserService et permet :</p>
+<ul>
+<li>une lecture réactive de l&#39;utilisateur courant</li>
+<li>l&#39;accès aux informations utilisateur dans le template</li>
+</ul>
+<p>Retourne <code>null</code> si aucun utilisateur n&#39;est connecté.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -378,7 +416,14 @@ import { RouterOutlet, RouterLink, RouterLinkActive } from &#x27;@angular/router
 import { UserService } from &#x27;../../services/UserService/user-service&#x27;;
 import { User } from &#x27;../../models/User/user&#x27;;
 
-
+/**
+ * Composant principal de la page d&#x27;accueil.
+ *
+ * Rôle :
+ * - Servir de conteneur pour les routes enfants via le RouterOutlet
+ * - Fournir l&#x27;accès à l&#x27;utilisateur actuellement connecté
+ * - Exposer une action de déconnexion
+ */
 @Component({
   selector: &#x27;app-home&#x27;,
   imports: [
@@ -390,13 +435,38 @@ import { User } from &#x27;../../models/User/user&#x27;;
   styleUrl: &#x27;./home.css&#x27;,
 })
 export class Home {
+
+  /**
+   * Fonction retournant l&#x27;utilisateur actuellement authentifié.
+   *
+   * Cette référence est fournie par le UserService et permet :
+   * - une lecture réactive de l&#x27;utilisateur courant
+   * - l&#x27;accès aux informations utilisateur dans le template
+   *
+   * Retourne &#x60;null&#x60; si aucun utilisateur n&#x27;est connecté.
+   */
   readonly currentUser: () &#x3D;&gt; User | null;
 
+
+  /**
+   * Initialise le composant Home.
+   *
+   * Récupère la fonction &#x60;currentUser&#x60; exposée par le UserService
+   * afin de pouvoir accéder à l&#x27;état d&#x27;authentification courant.
+   *
+   * @param userService Service gérant l&#x27;état utilisateur et l&#x27;authentification.
+   */
   constructor(private userService: UserService) {
     this.currentUser &#x3D; this.userService.currentUser;
     console.log(&#x27;Current User:&#x27;, this.currentUser()?.fullName);
   }
 
+    /**
+   * Déconnecte l&#x27;utilisateur courant.
+   *
+   * Délègue la logique de déconnexion au UserService
+   * (suppression du token, nettoyage de l&#x27;état utilisateur, redirection éventuelle).
+   */
   logout() {
     this.userService.logout();
   }
