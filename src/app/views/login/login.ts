@@ -9,6 +9,16 @@ import { Router } from '@angular/router';
 
 import { UserService } from '../../services/UserService/user-service';
 
+/**
+ * Composant de page de connexion.
+ *
+ * Rôle :
+ * - Gérer le formulaire de login (email + mot de passe)
+ * - Valider les champs en temps réel
+ * - Appeler le UserService pour authentifier l'utilisateur
+ * - Rediriger vers la page d'accueil en cas de succès
+ */
+
 @Component({
   selector: 'app-login',
   imports: [
@@ -22,13 +32,27 @@ import { UserService } from '../../services/UserService/user-service';
   styleUrl: './login.css',
 })
 export class Login {
+  /** Champ email contrôlé par Reactive Forms, obligatoire et au format email. */
   readonly email = new FormControl('', [Validators.required, Validators.email]);
+  /** Message d'erreur associé au champ email, mis à jour en fonction des validateurs. */
   emailErrorMessage = signal('');
+  /** Champ mot de passe contrôlé par Reactive Forms, obligatoire. */
   readonly password = new FormControl('', [Validators.required]);
+  /** Message d'erreur associé au champ mot de passe, mis à jour en fonction des validateurs. */
   passwordErrorMessage = signal('');
+  /** Message d'erreur global en cas d'échec de la connexion. */
   readonly errorLogin = signal('');
+
   private router = inject(Router);
 
+  /**
+   * Initialise le composant.
+   *
+   * À l'initialisation, on s'abonne aux changements de statut et de valeur
+   * du champ email pour mettre à jour dynamiquement le message d'erreur.
+   *
+   * @param userService Service métier utilisé pour authentifier l'utilisateur.
+  */
   constructor(
     private userService: UserService
   ) {
@@ -36,7 +60,13 @@ export class Login {
       .pipe(takeUntilDestroyed())
       .subscribe(() => this.updateErrorMessage())
   }
-
+  /**
+   * Met à jour `emailErrorMessage` en fonction des erreurs du champ email.
+   *
+   * - `required` → l'utilisateur doit saisir une valeur.
+   * - `email` → le format saisi n'est pas une adresse email valide.
+   * - aucun erreur → message vide.
+   */
   updateErrorMessage() {
     if (this.email.hasError('required')) {
       this.emailErrorMessage.set('You must enter a value');
@@ -47,6 +77,16 @@ export class Login {
     }
   }
 
+    /**
+   * Tente de connecter l'utilisateur.
+   *
+   * Étapes :
+   * 1. Vérifie la validité des champs email et mot de passe.
+   * 2. En cas d'erreur de validation, met à jour les messages dédiés.
+   * 3. Si le formulaire est valide, appelle `userService.login`.
+   * 4. En cas de succès, redirige l'utilisateur vers `/home`.
+   * 5. En cas d'échec, affiche un message d'erreur global dans `errorLogin`.
+   */
   login() {
     if (this.email.invalid) {
       this.emailErrorMessage.set('Please enter a valid email before logging in.');

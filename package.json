@@ -7,7 +7,9 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "serve:ssr:XanaduERP": "node dist/XanaduERP/server/server.mjs"
+    "serve:ssr:XanaduERP": "node dist/XanaduERP/server/server.mjs",
+    "docs": "compodoc -p tsconfig.app.json -d docs",
+    "docs:serve": "compodoc -p tsconfig.app.json -d docs -s"
   },
   "prettier": {
     "printWidth": 100,
@@ -42,6 +44,7 @@
     "@angular/build": "^21.0.2",
     "@angular/cli": "^21.0.2",
     "@angular/compiler-cli": "^21.0.0",
+    "@compodoc/compodoc": "^1.1.32",
     "@tailwindcss/postcss": "^4.1.12",
     "@types/express": "^5.0.1",
     "@types/node": "^20.17.19",
